@@ -1,0 +1,8 @@
+{
+  "name": "Remix EVERLY",
+  "description": "Private couple media vault and file streaming portal powered by Google Drive.",
+  "requestFramePermissions": [],
+  "majorCapabilities": [
+    "MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"
+  ]
+}

@@ -1,0 +1,202 @@
+{
+  "entities": {
+    "User": {
+      "title": "User",
+      "description": "User profile for verified Everly accounts",
+      "type": "object",
+      "properties": {
+        "email": {
+          "type": "string",
+          "format": "email",
+          "description": "Verified Google email address"
+        },
+        "name": {
+          "type": "string",
+          "maxLength": 100,
+          "description": "Display name of user"
+        },
+        "role": {
+          "type": "string",
+          "enum": ["Owner", "Member"],
+          "description": "Server-authoritative user role"
+        },
+        "avatarInitials": {
+          "type": "string",
+          "maxLength": 4,
+          "description": "Initials for avatar"
+        },
+        "avatarColor": {
+          "type": "string",
+          "maxLength": 64,
+          "description": "Gradient or color token"
+        },
+        "avatarUrl": {
+          "type": "string",
+          "maxLength": 512,
+          "description": "Profile picture URL from Google"
+        },
+        "createdAt": {
+          "type": "string",
+          "description": "Creation timestamp"
+        },
+        "lastLoginAt": {
+          "type": "string",
+          "description": "Last sign-in timestamp"
+        }
+      },
+      "required": ["email", "name", "role", "createdAt"]
+    },
+    "MemoryNote": {
+      "title": "MemoryNote",
+      "description": "Couple shared memory note or love message",
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "maxLength": 128,
+          "description": "Unique identifier of note"
+        },
+        "content": {
+          "type": "string",
+          "maxLength": 4000,
+          "description": "Text content of note"
+        },
+        "authorEmail": {
+          "type": "string",
+          "format": "email",
+          "description": "Email of author"
+        },
+        "authorName": {
+          "type": "string",
+          "maxLength": 100,
+          "description": "Name of author"
+        },
+        "authorRole": {
+          "type": "string",
+          "enum": ["Owner", "Member"],
+          "description": "Role of author"
+        },
+        "category": {
+          "type": "string",
+          "enum": ["love-note", "memory", "date-idea", "wishlist"],
+          "description": "Category of note"
+        },
+        "colorScheme": {
+          "type": "string",
+          "enum": ["rose", "amber", "indigo", "emerald"],
+          "description": "Visual theme color"
+        },
+        "createdAt": {
+          "type": "string",
+          "description": "Timestamp when note was created"
+        }
+      },
+      "required": ["id", "content", "authorEmail", "authorName", "category", "createdAt"]
+    },
+    "MediaItem": {
+      "title": "MediaItem",
+      "description": "Metadata for photo, video, audio or document in the shared vault",
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "maxLength": 128,
+          "description": "Unique file ID"
+        },
+        "name": {
+          "type": "string",
+          "maxLength": 256,
+          "description": "File name"
+        },
+        "type": {
+          "type": "string",
+          "enum": ["photo", "video", "audio", "document"],
+          "description": "Media category"
+        },
+        "mimeType": {
+          "type": "string",
+          "maxLength": 128,
+          "description": "MIME type"
+        },
+        "size": {
+          "type": "number",
+          "description": "Size in bytes"
+        },
+        "uploadedAt": {
+          "type": "string",
+          "description": "Upload timestamp"
+        },
+        "uploadedByEmail": {
+          "type": "string",
+          "format": "email",
+          "description": "Email of uploader"
+        },
+        "uploadedByName": {
+          "type": "string",
+          "maxLength": 100,
+          "description": "Name of uploader"
+        },
+        "caption": {
+          "type": "string",
+          "maxLength": 1000,
+          "description": "Optional caption or story"
+        },
+        "isFavorite": {
+          "type": "boolean",
+          "description": "Favorited state"
+        }
+      },
+      "required": ["id", "name", "type", "mimeType", "uploadedAt", "uploadedByEmail"]
+    },
+    "ChatMessage": {
+      "title": "ChatMessage",
+      "description": "Realtime shared conversation message between couple",
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "maxLength": 128,
+          "description": "Unique message ID"
+        },
+        "senderEmail": {
+          "type": "string",
+          "format": "email",
+          "description": "Sender Google email"
+        },
+        "senderName": {
+          "type": "string",
+          "maxLength": 100,
+          "description": "Sender display name"
+        },
+        "text": {
+          "type": "string",
+          "maxLength": 2000,
+          "description": "Message text"
+        },
+        "createdAt": {
+          "type": "string",
+          "description": "Creation timestamp"
+        }
+      },
+      "required": ["id", "senderEmail", "senderName", "text", "createdAt"]
+    }
+  },
+  "firestore": {
+    "/users/{userId}": {
+      "schema": "User",
+      "description": "User profiles for authorized Everly accounts"
+    },
+    "/memoryNotes/{noteId}": {
+      "schema": "MemoryNote",
+      "description": "Couple shared memory notes and love letters"
+    },
+    "/mediaFiles/{fileId}": {
+      "schema": "MediaItem",
+      "description": "Metadata for shared media files in the vault"
+    },
+    "/chatMessages/{messageId}": {
+      "schema": "ChatMessage",
+      "description": "Shared couple realtime chat messages"
+    }
+  }
+}

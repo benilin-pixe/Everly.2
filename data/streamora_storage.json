@@ -1,0 +1,366 @@
+{
+  "version": 1,
+  "servers": [
+    {
+      "id": "srv_streamora_primary_disk",
+      "name": "Streamora Primary Fast Storage",
+      "provider": "local_disk",
+      "enabled": true,
+      "isDefault": true,
+      "priority": 100,
+      "capacityBytes": 53687091200,
+      "usedBytes": 0,
+      "uploadLimitBytes": 4294967296,
+      "healthStatus": "healthy",
+      "healthMessage": "Local high-performance object volume online and verified",
+      "uploadHealth": "healthy",
+      "playbackHealth": "healthy",
+      "lastCheckedAt": "2026-10-14T23:59:41.800Z",
+      "lastSuccessfulUploadAt": null,
+      "storedVideoCount": 0,
+      "createdAt": "2026-10-14T23:59:41.800Z",
+      "updatedAt": "2026-10-14T23:59:41.800Z"
+    },
+    {
+      "id": "srv_everly_drive",
+      "name": "Everly Cloud Storage",
+      "provider": "everly_drive",
+      "enabled": true,
+      "isDefault": false,
+      "priority": 90,
+      "capacityBytes": 32212254720,
+      "usedBytes": 0,
+      "uploadLimitBytes": 2147483648,
+      "healthStatus": "healthy",
+      "healthMessage": "Everly dual Google Drive cloud integration active and synchronized",
+      "uploadHealth": "healthy",
+      "playbackHealth": "healthy",
+      "lastCheckedAt": "2026-10-14T23:59:41.800Z",
+      "lastSuccessfulUploadAt": null,
+      "storedVideoCount": 0,
+      "createdAt": "2026-10-14T23:59:41.800Z",
+      "updatedAt": "2026-10-14T23:59:41.800Z"
+    },
+    {
+      "id": "srv_media_cm",
+      "name": "Media.cm Video Cloud",
+      "provider": "media_cm",
+      "enabled": true,
+      "isDefault": false,
+      "priority": 80,
+      "capacityBytes": 10995116277760,
+      "usedBytes": 0,
+      "uploadLimitBytes": 314572800,
+      "healthStatus": "healthy",
+      "healthMessage": "Connected to Media.cm API. Account: benilin76@gmail.com · Storage: 0.2 MB. Upload server: Ready (154ms).",
+      "uploadHealth": "healthy",
+      "playbackHealth": "healthy",
+      "lastCheckedAt": "2026-10-15T00:14:22.939Z",
+      "lastSuccessfulUploadAt": null,
+      "storedVideoCount": 0,
+      "endpoint": "https://media.cm",
+      "accountUrl": "https://media.cm/?op=my_files",
+      "websiteUrl": "https://media.cm/",
+      "apiKey": "27301zu9yopzsni12beju",
+      "createdAt": "2026-10-14T23:59:41.800Z",
+      "updatedAt": "2026-10-15T00:14:22.939Z"
+    }
+  ],
+  "videos": [],
+  "upload_jobs": [],
+  "audit_logs": [
+    {
+      "action": "server_updated",
+      "actorEmail": "benilin76@gmail.com",
+      "targetId": "srv_media_cm",
+      "targetType": "server",
+      "details": {
+        "healthStatus": "healthy",
+        "healthMessage": "Connected to Media.cm API. Account: benilin76@gmail.com · Storage: 0.2 MB. Upload server: Ready (154ms).",
+        "uploadHealth": "healthy",
+        "playbackHealth": "healthy",
+        "lastCheckedAt": "2026-10-15T00:14:22.939Z"
+      },
+      "id": "audit_1792023262939_96cc8a",
+      "timestamp": "2026-10-15T00:14:22.940Z"
+    },
+    {
+      "action": "server_updated",
+      "actorEmail": "benilin76@gmail.com",
+      "targetId": "srv_media_cm",
+      "targetType": "server",
+      "details": {
+        "apiKey": ""
+      },
+      "id": "audit_1792023251775_9b8b85",
+      "timestamp": "2026-10-15T00:14:11.775Z"
+    },
+    {
+      "action": "server_tested",
+      "actorEmail": "benilin76@gmail.com",
+      "targetId": "srv_media_cm",
+      "targetType": "server",
+      "details": {
+        "result": {
+          "success": true,
+          "message": "Connected to Media.cm API. Account: benilin76@gmail.com · Storage: 0.2 MB. Upload server: Ready (431ms).",
+          "latencyMs": 431
+        }
+      },
+      "id": "audit_1792023245637_571b57",
+      "timestamp": "2026-10-15T00:14:05.637Z"
+    },
+    {
+      "action": "server_updated",
+      "actorEmail": "benilin76@gmail.com",
+      "targetId": "srv_media_cm",
+      "targetType": "server",
+      "details": {
+        "healthStatus": "healthy",
+        "healthMessage": "Connected to Media.cm API. Account: benilin76@gmail.com · Storage: 0.2 MB. Upload server: Ready (431ms).",
+        "uploadHealth": "healthy",
+        "playbackHealth": "healthy",
+        "lastCheckedAt": "2026-10-15T00:14:05.636Z"
+      },
+      "id": "audit_1792023245636_3219ba",
+      "timestamp": "2026-10-15T00:14:05.636Z"
+    },
+    {
+      "action": "server_updated",
+      "actorEmail": "benilin76@gmail.com",
+      "targetId": "srv_media_cm",
+      "targetType": "server",
+      "details": {
+        "healthStatus": "degraded",
+        "healthMessage": "Configuration required: Media.cm API key is missing. Please set the MEDIA_CM_API_KEY environment variable or enter your API key in the server settings (obtain from https://media.cm/?op=my_files).",
+        "uploadHealth": "degraded",
+        "playbackHealth": "degraded",
+        "lastCheckedAt": "2026-10-15T00:01:36.244Z"
+      },
+      "id": "audit_1792022496244_f04a77",
+      "timestamp": "2026-10-15T00:01:36.244Z"
+    },
+    {
+      "action": "server_tested",
+      "actorEmail": "benilin76@gmail.com",
+      "targetId": "srv_media_cm",
+      "targetType": "server",
+      "details": {
+        "result": {
+          "success": false,
+          "message": "Configuration required: Media.cm API key is missing. Please set the MEDIA_CM_API_KEY environment variable or enter your API key in the server settings (obtain from https://media.cm/?op=my_files).",
+          "latencyMs": 0
+        }
+      },
+      "id": "audit_1792022487093_1c2b9c",
+      "timestamp": "2026-10-15T00:01:27.093Z"
+    },
+    {
+      "action": "server_updated",
+      "actorEmail": "benilin76@gmail.com",
+      "targetId": "srv_media_cm",
+      "targetType": "server",
+      "details": {
+        "healthStatus": "degraded",
+        "healthMessage": "Configuration required: Media.cm API key is missing. Please set the MEDIA_CM_API_KEY environment variable or enter your API key in the server settings (obtain from https://media.cm/?op=my_files).",
+        "uploadHealth": "degraded",
+        "playbackHealth": "degraded",
+        "lastCheckedAt": "2026-10-15T00:01:27.092Z"
+      },
+      "id": "audit_1792022487092_8630d7",
+      "timestamp": "2026-10-15T00:01:27.093Z"
+    },
+    {
+      "action": "server_tested",
+      "actorEmail": "benilin76@gmail.com",
+      "targetId": "srv_media_cm",
+      "targetType": "server",
+      "details": {
+        "result": {
+          "success": false,
+          "message": "Configuration required: Media.cm API key is missing. Please set the MEDIA_CM_API_KEY environment variable or enter your API key in the server settings (obtain from https://media.cm/?op=my_files).",
+          "latencyMs": 0
+        }
+      },
+      "id": "audit_1792022483298_eb59c9",
+      "timestamp": "2026-10-15T00:01:23.298Z"
+    },
+    {
+      "action": "server_updated",
+      "actorEmail": "benilin76@gmail.com",
+      "targetId": "srv_media_cm",
+      "targetType": "server",
+      "details": {
+        "healthStatus": "degraded",
+        "healthMessage": "Configuration required: Media.cm API key is missing. Please set the MEDIA_CM_API_KEY environment variable or enter your API key in the server settings (obtain from https://media.cm/?op=my_files).",
+        "uploadHealth": "degraded",
+        "playbackHealth": "degraded",
+        "lastCheckedAt": "2026-10-15T00:01:23.297Z"
+      },
+      "id": "audit_1792022483297_d1e76d",
+      "timestamp": "2026-10-15T00:01:23.297Z"
+    },
+    {
+      "action": "server_tested",
+      "actorEmail": "benilin76@gmail.com",
+      "targetId": "srv_media_cm",
+      "targetType": "server",
+      "details": {
+        "result": {
+          "success": false,
+          "message": "Configuration required: Media.cm API key is missing. Please set the MEDIA_CM_API_KEY environment variable or enter your API key in the server settings (obtain from https://media.cm/?op=my_files).",
+          "latencyMs": 0
+        }
+      },
+      "id": "audit_1792022456477_5bf675",
+      "timestamp": "2026-10-15T00:00:56.477Z"
+    },
+    {
+      "action": "server_updated",
+      "actorEmail": "benilin76@gmail.com",
+      "targetId": "srv_media_cm",
+      "targetType": "server",
+      "details": {
+        "healthStatus": "degraded",
+        "healthMessage": "Configuration required: Media.cm API key is missing. Please set the MEDIA_CM_API_KEY environment variable or enter your API key in the server settings (obtain from https://media.cm/?op=my_files).",
+        "uploadHealth": "degraded",
+        "playbackHealth": "degraded",
+        "lastCheckedAt": "2026-10-15T00:00:56.477Z"
+      },
+      "id": "audit_1792022456477_42c472",
+      "timestamp": "2026-10-15T00:00:56.477Z"
+    },
+    {
+      "action": "server_updated",
+      "actorEmail": "benilin76@gmail.com",
+      "targetId": "srv_media_cm",
+      "targetType": "server",
+      "details": {
+        "apiKey": ""
+      },
+      "id": "audit_1792022453521_365c39",
+      "timestamp": "2026-10-15T00:00:53.521Z"
+    },
+    {
+      "action": "server_updated",
+      "actorEmail": "benilin76@gmail.com",
+      "targetId": "srv_media_cm",
+      "targetType": "server",
+      "details": {},
+      "id": "audit_1792022429700_b71539",
+      "timestamp": "2026-10-15T00:00:29.700Z"
+    },
+    {
+      "action": "server_tested",
+      "actorEmail": "benilin76@gmail.com",
+      "targetId": "srv_media_cm",
+      "targetType": "server",
+      "details": {
+        "result": {
+          "success": false,
+          "message": "Media.cm authentication failed: Invalid key (Code: 400)",
+          "latencyMs": 191
+        }
+      },
+      "id": "audit_1792022425736_82ecd1",
+      "timestamp": "2026-10-15T00:00:25.736Z"
+    },
+    {
+      "action": "server_updated",
+      "actorEmail": "benilin76@gmail.com",
+      "targetId": "srv_media_cm",
+      "targetType": "server",
+      "details": {
+        "healthStatus": "unhealthy",
+        "healthMessage": "Media.cm authentication failed: Invalid key (Code: 400)",
+        "uploadHealth": "degraded",
+        "playbackHealth": "degraded",
+        "lastCheckedAt": "2026-10-15T00:00:25.735Z"
+      },
+      "id": "audit_1792022425735_f6cd7e",
+      "timestamp": "2026-10-15T00:00:25.735Z"
+    },
+    {
+      "action": "server_updated",
+      "actorEmail": "benilin76@gmail.com",
+      "targetId": "srv_media_cm",
+      "targetType": "server",
+      "details": {
+        "apiKey": "test_dummy_key_123"
+      },
+      "id": "audit_1792022422587_770efb",
+      "timestamp": "2026-10-15T00:00:22.587Z"
+    },
+    {
+      "action": "server_tested",
+      "actorEmail": "benilin76@gmail.com",
+      "targetId": "srv_media_cm",
+      "targetType": "server",
+      "details": {
+        "result": {
+          "success": false,
+          "message": "Configuration required: Media.cm API key is missing. Please set the MEDIA_CM_API_KEY environment variable or enter your API key in the server settings (obtain from https://media.cm/?op=my_files).",
+          "latencyMs": 0
+        }
+      },
+      "id": "audit_1792022418736_cff7e7",
+      "timestamp": "2026-10-15T00:00:18.736Z"
+    },
+    {
+      "action": "server_updated",
+      "actorEmail": "benilin76@gmail.com",
+      "targetId": "srv_media_cm",
+      "targetType": "server",
+      "details": {
+        "healthStatus": "degraded",
+        "healthMessage": "Configuration required: Media.cm API key is missing. Please set the MEDIA_CM_API_KEY environment variable or enter your API key in the server settings (obtain from https://media.cm/?op=my_files).",
+        "uploadHealth": "degraded",
+        "playbackHealth": "degraded",
+        "lastCheckedAt": "2026-10-15T00:00:18.735Z"
+      },
+      "id": "audit_1792022418735_06a179",
+      "timestamp": "2026-10-15T00:00:18.736Z"
+    },
+    {
+      "id": "audit_1792022381800_init",
+      "action": "server_created",
+      "actorEmail": "system",
+      "targetId": "srv_streamora_primary_disk",
+      "targetType": "server",
+      "details": {
+        "name": "Streamora Primary Fast Storage",
+        "provider": "local_disk"
+      },
+      "timestamp": "2026-10-14T23:59:41.800Z"
+    },
+    {
+      "id": "audit_1792022381800_init_everly",
+      "action": "server_created",
+      "actorEmail": "system",
+      "targetId": "srv_everly_drive",
+      "targetType": "server",
+      "details": {
+        "name": "Everly Cloud Storage",
+        "provider": "everly_drive"
+      },
+      "timestamp": "2026-10-14T23:59:41.800Z"
+    },
+    {
+      "id": "audit_1792022381800_init_mediacm",
+      "action": "server_created",
+      "actorEmail": "system",
+      "targetId": "srv_media_cm",
+      "targetType": "server",
+      "details": {
+        "name": "Media.cm Video Cloud",
+        "provider": "media_cm"
+      },
+      "timestamp": "2026-10-14T23:59:41.800Z"
+    }
+  ],
+  "settings": {
+    "selectionMode": "automatic",
+    "defaultServerId": "srv_streamora_primary_disk",
+    "autoDistributionStrategy": "priority"
+  }
+}

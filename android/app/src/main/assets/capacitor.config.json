@@ -1,0 +1,20 @@
+{
+	"appId": "com.everly.workspace",
+	"appName": "Everly",
+	"webDir": "dist",
+	"server": {
+		"androidScheme": "https",
+		"cleartext": true
+	},
+	"plugins": {
+		"Keyboard": {
+			"resize": "body",
+			"style": "DARK",
+			"resizeOnFullScreen": true
+		},
+		"StatusBar": {
+			"style": "DARK",
+			"overlaysWebView": false
+		}
+	}
+}

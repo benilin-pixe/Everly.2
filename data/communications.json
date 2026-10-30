@@ -1,0 +1,66 @@
+{
+  "conversations": [
+    {
+      "id": "conv_friends_direct",
+      "type": "direct",
+      "createdAt": "2026-10-29T10:31:27.500Z",
+      "updatedAt": "2026-10-29T10:36:27.500Z"
+    }
+  ],
+  "conversation_members": [
+    {
+      "id": "member_ben",
+      "conversationId": "conv_friends_direct",
+      "userEmail": "benilin76@gmail.com",
+      "joinedAt": "2026-10-29T10:31:27.500Z"
+    },
+    {
+      "id": "member_shana",
+      "conversationId": "conv_friends_direct",
+      "userEmail": "shanalove917@gmail.com",
+      "joinedAt": "2026-10-29T10:31:27.500Z"
+    }
+  ],
+  "messages": [
+    {
+      "id": "msg_1793249773612_45zgsop",
+      "conversationId": "conv_friends_direct",
+      "senderEmail": "benilin76@gmail.com",
+      "recipientEmail": "shanalove917@gmail.com",
+      "text": "Hello my love! Test message timestamp: 1793249773597",
+      "createdAt": "2026-10-29T04:56:13.612Z",
+      "status": "read",
+      "deliveredAt": "2026-10-29T04:56:13.614Z",
+      "deleted": true,
+      "readAt": "2026-10-29T04:56:14.000Z"
+    }
+  ],
+  "message_reads": [
+    {
+      "id": "read_1790679295468_tvt4",
+      "messageId": "msg_1790679295074_ujnx7jk",
+      "userEmail": "benilin76@gmail.com",
+      "readAt": "2026-09-29T10:54:55.468Z"
+    },
+    {
+      "id": "read_1793249774000_dlfo",
+      "messageId": "msg_1793249773612_45zgsop",
+      "userEmail": "shanalove917@gmail.com",
+      "readAt": "2026-10-29T04:56:14.000Z"
+    }
+  ],
+  "user_presence": [
+    {
+      "userEmail": "benilin76@gmail.com",
+      "isOnline": true,
+      "lastSeen": "2026-10-29T10:36:27.500Z",
+      "socketCount": 25
+    },
+    {
+      "userEmail": "shanalove917@gmail.com",
+      "isOnline": true,
+      "lastSeen": "2026-10-29T04:56:18.618Z",
+      "socketCount": 13
+    }
+  ]
+}

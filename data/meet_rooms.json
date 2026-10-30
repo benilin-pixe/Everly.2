@@ -1,0 +1,30 @@
+[
+  {
+    "id": "default-date-night",
+    "name": "spaces/everly-date-night",
+    "meetingUri": "https://meet.google.com/new",
+    "meetingCode": "new",
+    "title": "Romantic Date Night",
+    "description": "Our private candlelit video rendezvous & wine night.",
+    "category": "date-night",
+    "createdByEmail": "benilin76@gmail.com",
+    "createdByName": "BeniLin",
+    "createdAt": "2026-10-26T22:04:39.449Z",
+    "accessType": "OPEN",
+    "isActive": true
+  },
+  {
+    "id": "default-movie-sync",
+    "name": "spaces/everly-cinema-sync",
+    "meetingUri": "https://meet.google.com/new",
+    "meetingCode": "new",
+    "title": "Cinema & Movie Sync",
+    "description": "Synchronized cinema watchparty and live reactions.",
+    "category": "movie-night",
+    "createdByEmail": "shanalove917@gmail.com",
+    "createdByName": "Shana Love",
+    "createdAt": "2026-10-26T22:04:39.449Z",
+    "accessType": "OPEN",
+    "isActive": true
+  }
+]

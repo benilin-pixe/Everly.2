@@ -1,0 +1,115 @@
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+
+    // 1. Global Default-Deny Safety Net
+    match /{document=**} {
+      allow read, write: if false;
+    }
+
+    // Security Helper Primitives
+    function isSignedIn() {
+      return request.auth != null;
+    }
+
+    function isVerifiedEmail() {
+      return isSignedIn() && request.auth.token.email_verified == true;
+    }
+
+    function isAuthorizedAccount() {
+      return isSignedIn() &&
+        isVerifiedEmail() &&
+        request.auth.token.email != null &&
+        (request.auth.token.email.lower() == 'benilin76@gmail.com' || request.auth.token.email.lower() == 'shanalove917@gmail.com');
+    }
+
+    function isValidId(id) {
+      return id is string && id.size() > 0 && id.size() <= 128 && id.matches('^[a-zA-Z0-9_\\-]+$');
+    }
+
+    // Entity Validators
+    function isValidUser(data) {
+      return data.keys().hasAll(['email', 'name', 'role', 'createdAt']) &&
+        data.keys().hasOnly(['email', 'name', 'role', 'avatarInitials', 'avatarColor', 'avatarUrl', 'createdAt', 'lastLoginAt']) &&
+        data.email is string && data.email.size() <= 100 &&
+        data.name is string && data.name.size() <= 100 &&
+        data.role == 'Owner' &&
+        (!('avatarInitials' in data) || (data.avatarInitials is string && data.avatarInitials.size() <= 4)) &&
+        (!('avatarColor' in data) || (data.avatarColor is string && data.avatarColor.size() <= 64)) &&
+        (!('avatarUrl' in data) || (data.avatarUrl is string && data.avatarUrl.size() <= 512)) &&
+        data.createdAt is string;
+    }
+
+    function isValidMemoryNote(data) {
+      return data.keys().hasAll(['id', 'content', 'authorEmail', 'authorName', 'category', 'createdAt']) &&
+        data.keys().hasOnly(['id', 'content', 'authorEmail', 'authorName', 'authorRole', 'category', 'colorScheme', 'createdAt']) &&
+        data.id is string && isValidId(data.id) &&
+        data.content is string && data.content.size() > 0 && data.content.size() <= 4000 &&
+        data.authorEmail is string && data.authorEmail.size() <= 100 &&
+        data.authorName is string && data.authorName.size() <= 100 &&
+        data.category in ['love-note', 'memory', 'date-idea', 'wishlist'] &&
+        (!('colorScheme' in data) || (data.colorScheme in ['rose', 'amber', 'indigo', 'emerald'])) &&
+        data.createdAt is string;
+    }
+
+    function isValidMediaItem(data) {
+      return data.keys().hasAll(['id', 'name', 'type', 'mimeType', 'uploadedAt', 'uploadedByEmail']) &&
+        data.keys().hasOnly(['id', 'name', 'type', 'mimeType', 'size', 'uploadedAt', 'uploadedByEmail', 'uploadedByName', 'caption', 'isFavorite']) &&
+        data.id is string && isValidId(data.id) &&
+        data.name is string && data.name.size() > 0 && data.name.size() <= 256 &&
+        data.type in ['photo', 'video', 'audio', 'document'] &&
+        data.mimeType is string && data.mimeType.size() <= 128 &&
+        (!('size' in data) || (data.size is number && data.size >= 0)) &&
+        data.uploadedByEmail is string && data.uploadedByEmail.size() <= 100 &&
+        (!('caption' in data) || (data.caption is string && data.caption.size() <= 1000)) &&
+        (!('isFavorite' in data) || (data.isFavorite is bool)) &&
+        data.uploadedAt is string;
+    }
+
+    function isValidChatMessage(data) {
+      return data.keys().hasAll(['id', 'senderEmail', 'senderName', 'text', 'createdAt']) &&
+        data.keys().hasOnly(['id', 'senderEmail', 'senderName', 'text', 'createdAt']) &&
+        data.id is string && isValidId(data.id) &&
+        data.senderEmail is string && data.senderEmail.size() <= 100 &&
+        data.senderName is string && data.senderName.size() <= 100 &&
+        data.text is string && data.text.size() > 0 && data.text.size() <= 2000 &&
+        data.createdAt is string;
+    }
+
+    // Collections Access Rules
+
+    // 1. Users collection
+    match /users/{userId} {
+      allow read: if isAuthorizedAccount();
+      allow create: if isAuthorizedAccount() &&
+        request.auth.uid == userId &&
+        isValidUser(request.resource.data);
+      allow update: if isAuthorizedAccount() &&
+        isValidUser(request.resource.data) &&
+        request.resource.data.email == resource.data.email &&
+        request.resource.data.createdAt == resource.data.createdAt &&
+        request.resource.data.diff(resource.data).affectedKeys().hasOnly(['name', 'role', 'avatarInitials', 'avatarColor', 'avatarUrl', 'lastLoginAt']);
+      allow delete: if false;
+    }
+
+    // 2. Memory Notes collection
+    match /memoryNotes/{noteId} {
+      allow read, write: if isAuthorizedAccount();
+    }
+
+    // 3. Media Files collection
+    match /mediaFiles/{fileId} {
+      allow read, write: if isAuthorizedAccount();
+    }
+
+    // 4. Chat Messages collection
+    match /chatMessages/{messageId} {
+      allow read, write: if isAuthorizedAccount();
+    }
+
+    // 5. Google Meet Spaces collection
+    match /meetSpaces/{spaceId} {
+      allow read, write: if isAuthorizedAccount();
+    }
+  }
+}
